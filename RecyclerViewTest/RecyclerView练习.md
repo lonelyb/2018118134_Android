@@ -28,9 +28,11 @@
         }
         return builder.toString();
     }  
-运行程序，实验结果如下  
+运行程序，实验结果如下 
+<br/>
 ![启动程序](/RecyclerViewTest/img/捕获.PNG)  
 ![启动程序](/RecyclerViewTest/img/捕获1.PNG)  
+
 在适配器中注册点击事件
 
         final ViewHolder holder = new ViewHolder(view);
@@ -53,5 +55,6 @@
 
 
 实验结果如下  
+<br/>
 ![启动程序](/RecyclerViewTest/img/捕获3.PNG)  
 ![启动程序](/RecyclerViewTest/img/捕获4.PNG)
