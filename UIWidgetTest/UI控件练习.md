@@ -1,6 +1,6 @@
 #实验目的
 掌握常用控件的使用方法：TextView、Button、EditText、ImageView、AlertDialog
-#实验内容
+#实验内容 
 TextView最简单的控件，在界面上显示一段文本，可以使用一些属性调节位置和字体颜色等
 <br/>
 ![启动程序](/UIWidgetTest/img/捕获.PNG)  
