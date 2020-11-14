@@ -1,6 +1,7 @@
 package com.example.broadcasttest;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -16,32 +17,48 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private IntentFilter interntFiler;
-   private NetworkChangeReceiver networkChangeReceiver;
+    //private NetworkChangeReceiver networkChangeReceiver;
+    private LocalReceive localReceive;
+    private LocalBroadcastManager localBroadcastManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acticity_main);
-        interntFiler = new IntentFilter();
+        /*interntFiler = new IntentFilter();
         interntFiler.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         networkChangeReceiver = new NetworkChangeReceiver();
-        registerReceiver(networkChangeReceiver,interntFiler);
+        registerReceiver(networkChangeReceiver,interntFiler);*/
+        localBroadcastManager= LocalBroadcastManager.getInstance(this);
         Button button=(Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent("com.example.broadcasttest.MY_BROADCAST");
+                /*Intent intent = new Intent("com.example.broadcasttest.MY_BROADCAST");
                 intent.setComponent(new ComponentName("com.example.broadcasttest","com.example.broadcasttest.MyBroadcastReceiver"));
                 sendBroadcast(intent);
+                sendOrderedBroadcast(intent,null);*/
+                Intent intent= new Intent("com.example.broadcasttest.LOCAL_BROADCAST");
+                localBroadcastManager.sendBroadcast(intent);
             }
         });
-
+        interntFiler = new IntentFilter();
+        interntFiler.addAction("com.example.broadcasttest.LOCAL_BROADCAST");
+        localReceive = new LocalReceive();
+        localBroadcastManager.registerReceiver(localReceive,interntFiler);
     }
 
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        unregisterReceiver(networkChangeReceiver);
+        //unregisterReceiver(networkChangeReceiver);
+        localBroadcastManager.unregisterReceiver(localReceive);
+    }
+    class LocalReceive extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context,Intent intent){
+            Toast.makeText(context,"receive in AnotherBroadcastReceive",Toast.LENGTH_SHORT).show();
+        }
     }
 
     class NetworkChangeReceiver extends BroadcastReceiver{
