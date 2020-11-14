@@ -8,4 +8,4 @@
 ## 第四次作业：UI控件
 [第四次作业](https://github.com/lonelyb/2018118134_Android/tree/master/UIWidgetTest)
 ## 第五次作业：RecyclerView
-[第五次作业](https://github.com/lonelyb/2018118134_Android/tree/master/UIWidgetTest)
+[第五次作业](https://github.com/lonelyb/2018118134_Android/tree/master/RecyclerViewTest)
