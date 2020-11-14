@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private IntentFilter interntFiler;
-    private NetworkChangeReceiver networkChangeReceiver;
+   private NetworkChangeReceiver networkChangeReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +25,15 @@ public class MainActivity extends AppCompatActivity {
         interntFiler.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         networkChangeReceiver = new NetworkChangeReceiver();
         registerReceiver(networkChangeReceiver,interntFiler);
-
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button button=(Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
                 Intent intent = new Intent("com.example.broadcasttest.MY_BROADCAST");
                 sendBroadcast(intent);
             }
         });
+
     }
 
     @Override
@@ -55,15 +55,11 @@ public class MainActivity extends AppCompatActivity {
             else{
                 Toast.makeText(context,"network is unavailable", Toast.LENGTH_SHORT).show();
             }
+
+
         }
     }
 
-    public class MyBroadcastReceiver extends BroadcastReceiver {
 
-        @Override
-        public void onReceive (Context context, Intent intent){
-            Toast.makeText(context, "receive in MyBroadcastReceive", Toast.LENGTH_SHORT).show();
-        }
-    }
 
 }
