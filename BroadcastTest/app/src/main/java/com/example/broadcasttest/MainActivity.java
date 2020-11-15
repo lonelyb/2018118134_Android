@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     class LocalReceive extends BroadcastReceiver{
         @Override
         public void onReceive(Context context,Intent intent){
-            Toast.makeText(context,"receive in AnotherBroadcastReceive",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"receive local broadcast",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -74,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
             else{
                 Toast.makeText(context,"network is unavailable", Toast.LENGTH_SHORT).show();
             }
-
-
         }
     }
 
