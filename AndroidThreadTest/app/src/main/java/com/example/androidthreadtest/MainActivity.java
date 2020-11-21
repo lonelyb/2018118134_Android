@@ -32,9 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         text = (TextView) findViewById(R.id.text);
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
-
-
     }
+
     @Override
     public void onClick(View v){
         switch(v.getId()){
