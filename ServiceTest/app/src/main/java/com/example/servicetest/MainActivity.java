@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             downloadBinder .startDownload();
             downloadBinder.getProgress();
         }
-
         @Override
         public void onServiceDisconnected(ComponentName componentName) {
         }
